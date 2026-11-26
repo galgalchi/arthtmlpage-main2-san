@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181b4e">
+  <meta name="description" content="그래픽 디자이너 샨의 작업 안내, 일정, 문의양식 및 포트폴리오">
+  <title>그래픽 디자이너 샨</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./page-data.js"></script>
+  <script defer src="./portfolio-model.js"></script>
+  <script defer src="./portfolio-carousel.js"></script>
+  <script defer src="./portfolio-view.js"></script>
+  <script defer src="./inquiry-ui.js"></script>
+  <script defer src="./video-dialog.js"></script>
+  <script defer src="./embed-client.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#section-notice">작업 안내로 바로 이동</a>
+  <main id="page">
+    <section class="hero scene" id="hero" aria-labelledby="page-title">
+      <div class="ornament hero-decor" aria-hidden="true"></div>
+      <details class="section-menu" id="sectionMenu">
+        <summary aria-label="페이지 메뉴"><span aria-hidden="true"></span></summary>
+        <nav aria-label="페이지 메뉴">
+          <a href="#section-notice">NOTICE</a><a href="#section-process">작업과정</a>
+          <a href="#section-calendar">작업일정</a><a href="#section-request">문의양식</a>
+          <a href="#section-portfolio">포트폴리오</a><a id="reviewsLink" href="#section-about" hidden>작업 후기</a>
+        </nav>
+      </details>
+      <div class="hero-card">
+        <img class="portrait" src="./assets/portrait.webp" width="820" height="1075" alt="네온 컬러의 머리카락과 붉은 막대 사탕이 돋보이는 샨의 프로필 일러스트" fetchpriority="high">
+        <div class="hero-copy">
+          <div>
+            <p class="hero-role" lang="en">Graphic Designer</p>
+            <h1 id="page-title">그래픽 디자이너 <span>샨</span></h1>
+            <p class="hero-intro"><strong>서브컬쳐 업계 전문.</strong> 심플함부터 극한의 화려함까지,<br class="desktop-break"> 빠른 작업시간에 높은 퀄리티의 디자인.</p>
+          </div>
+          <ul class="tags" aria-label="디자인 분야">
+            <li>#장르올라운더</li><li>#다채로운색감</li><li>#서브컬쳐</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="benefits">
+        <li><strong>확실한 수정</strong><span>찰떡같이, 단번에<br> 만족하실 수 있는 결과로</span></li>
+        <li><strong>넓은 바리에이션</strong><span>장르, 품목에 구애받지 않습니다<br> 현수막, 도서, 핫띠 등 모든 품목 취급</span></li>
+        <li><strong>놓치지 않는 친절</strong><span>단순문의도 빠르고 친절하게<br> 답해드립니다</span></li>
+      </ul>
+    </section>
+
+    <section class="notice scene" id="section-notice" aria-labelledby="notice-title">
+      <div class="ornament notice-decor" aria-hidden="true"></div>
+      <h2 class="section-title" id="notice-title" lang="en">NOTICE</h2>
+      <div class="notice-content">
+        <p class="notice-lead">공지 미숙지로 인한 불이익은 작업자가 책임지지 않습니다.</p>
+        <ul class="notice-list">
+          <li>기본 마감일은 휴무일을 제외한 1일 - 7일이나, 이후의 날짜를 제시하시면 조정이 들어갑니다.</li>
+          <li>저작권을 넘겨드리는 의뢰가 아닙니다. 해당사항은 문의 주시기 바라며 작업물의 2차 수정, 배포, 판매를 금지합니다.</li>
+          <li>포트폴리오 비공개 추가금(+30,000)이 존재합니다.</li>
+          <li>작업시작 이후 주문 취소와 환불은 불가합니다.</li>
+          <li>작업물 수령 후 사용할 예정이 없으시더라도 부분환불은 불가합니다.</li>
+          <li>오마카세 작업 시 디자인 전체수정이 불가합니다. 전체수정 시 동일 비용 추가 부과됩니다.</li>
+          <li>상업적 사용 가능 소재만을 사용합니다. 관련 문의 받지 않습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="process scene" id="section-process" aria-labelledby="process-title">
+      <div class="ornament process-decor" aria-hidden="true"></div>
+      <h2 class="section-title" id="process-title">작업과정</h2>
+      <ol class="process-list">
+        <li><img src="./assets/chat.webp" alt="" width="118" height="117"><span>문의 및 견적안내</span></li>
+        <li><img src="./assets/pay.webp" alt="" width="118" height="117"><span>주문 후 결제</span></li>
+        <li><img src="./assets/write.webp" alt="" width="118" height="117"><span>작업시작</span></li>
+        <li><img src="./assets/revise.webp" alt="" width="118" height="117"><span>컨펌 후 수정</span></li>
+        <li><img src="./assets/deliver.webp" alt="" width="118" height="117"><span>최종본 전달</span></li>
+      </ol>
+    </section>
+
+    <section class="schedule scene" id="section-calendar" aria-labelledby="schedule-title">
+      <div class="ornament calendar-decor" aria-hidden="true"></div>
+      <h2 class="section-title" id="schedule-title">작업일정</h2>
+      <div class="calendar-card">
+        <div class="calendar-nav">
+          <button id="calPrev" type="button" aria-label="이전 달"><span aria-hidden="true">◂</span></button>
+          <p class="calendar-month" id="calMonth" aria-live="polite"></p>
+          <button id="calNext" type="button" aria-label="다음 달"><span aria-hidden="true">▸</span></button>
+        </div>
+        <div class="calendar-tools">
+          <ul class="calendar-legend" aria-label="일정 상태 안내">
+            <li class="closed">마감</li><li class="holiday">휴일</li><li class="available">작업가능</li><li class="deadline" id="deadlineLegend" hidden>마감임박</li>
+          </ul>
+          <button class="today-button" id="calToday" type="button" hidden>오늘</button>
+        </div>
+        <div role="group" aria-labelledby="calMonth">
+          <div class="calendar-weekdays" aria-hidden="true" lang="en"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
+          <div class="calendar-days" id="calDays"></div>
+        </div>
+        <p class="calendar-note" id="calendarNote">일정은 문의 시 확인해 주세요.</p>
+      </div>
+    </section>
+
+    <section class="inquiry scene" id="section-request" aria-labelledby="inquiry-title">
+      <div class="ornament inquiry-decor" aria-hidden="true"></div>
+      <h2 class="section-title" id="inquiry-title">문의양식</h2>
+      <div class="inquiry-card">
+        <p id="attachment-note">아바타 이미지 배경투명화 png 첨부파일로 전달</p>
+        <ul id="inquiryFields">
+          <li>방송채널 주소</li><li>트위터 주소</li><li>문의품목</li><li>디자인 콘셉트</li>
+          <li>디자인 세부 요청사항 (레퍼런스 등)</li><li>필요하신 날짜</li><li>작업물 공개 요청일</li><li>기타</li>
+        </ul>
+      </div>
+      <div class="inquiry-actions">
+        <button class="pill" id="copyInquiry" type="button">문의양식복사</button>
+        <button class="text-button" id="writeInquiry" type="button">양식 작성 및 견적</button>
+      </div>
+      <p class="copy-status" id="copyStatus" role="status"></p>
+    </section>
+
+    <section class="portfolio scene" id="section-portfolio" aria-labelledby="portfolio-title">
+      <h2 class="section-title" id="portfolio-title">포트폴리오</h2>
+      <div class="portfolio-content" id="portfolio"></div>
+    </section>
+    <section class="reviews scene" id="section-about" aria-labelledby="reviews-title" hidden>
+      <h2 class="section-title" id="reviews-title">작업 후기</h2>
+      <div class="review-content" id="reviews"></div>
+    </section>
+    <noscript><p class="noscript">일정과 포트폴리오를 보려면 JavaScript를 활성화해 주세요.</p></noscript>
+  </main>
+
+  <dialog class="panel-dialog" id="memoDialog" aria-labelledby="memoTitle">
+    <form method="dialog"><button class="dialog-close" aria-label="메모 닫기">×</button></form>
+    <h2 id="memoTitle"></h2><p id="memoText"></p>
+  </dialog>
+  <dialog class="panel-dialog" id="inquiryEditor" aria-labelledby="editor-title">
+    <form method="dialog"><button class="dialog-close" aria-label="양식 편집 닫기">×</button></form>
+    <h2 id="editor-title">양식 작성 및 견적</h2>
+    <fieldset><legend>작업 품목</legend><div id="estimateOptions"></div></fieldset>
+    <label class="editor-field">사용 용도
+      <select id="usage"><option>비상업용</option><option>방송/상업용</option><option>외주</option><option>양도</option></select>
+    </label>
+    <p id="estimateTotal" role="status"></p>
+    <div id="editorFields"></div>
+    <button class="pill" id="copyEdited" type="button">작성한 양식 복사</button>
+  </dialog>
+  <dialog class="panel-dialog" id="manualCopy" aria-labelledby="manual-title">
+    <form method="dialog"><button class="dialog-close" aria-label="복사 창 닫기">×</button></form>
+    <h2 id="manual-title">문의양식 복사</h2>
+    <label class="editor-field">내용을 선택해 복사해 주세요<textarea id="manualText" rows="10" readonly></textarea></label>
+  </dialog>
+  <dialog class="media-dialog" id="lightbox" aria-labelledby="lightboxTitle">
+    <form method="dialog"><button class="dialog-close" aria-label="이미지 닫기">×</button></form>
+    <img id="lightboxImg" alt="">
+    <p id="lightboxTitle"></p>
+    <a id="lightboxOriginal" target="_blank" rel="noopener noreferrer">원본 이미지 새 창에서 보기</a>
+  </dialog>
+</body>
+</html>
