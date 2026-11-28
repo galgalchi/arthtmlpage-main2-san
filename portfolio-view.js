@@ -161,6 +161,14 @@
     let primarySignature, secondarySignature, contentSignature;
     let releaseSlider;
 
+    function reportCategory() {
+      const work = section.querySelector('[data-kind]');
+      section.dispatchEvent(new CustomEvent('portfolio-category', {
+        bubbles: true,
+        detail: {kind: work?.dataset.kind || 'image', title: section.dataset.category, key: section.dataset.categoryKey}
+      }));
+    }
+
     function render() {
       const defaults = model.resolveDefaults(data);
       const primaries = model.entries(data.categories);
@@ -201,6 +209,7 @@
             selectedPrimary = id;
             selectedSecondary = slideKey = null;
             render();
+            reportCategory();
           };
           tabs.append(tab);
         }
@@ -244,6 +253,7 @@
       selectedSecondary = select.value;
       slideKey = null;
       render();
+      reportCategory();
     };
 
     function setData(next) {

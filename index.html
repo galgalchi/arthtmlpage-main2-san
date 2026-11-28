@@ -7,6 +7,7 @@
   <meta name="description" content="그래픽 디자이너 샨의 작업 안내, 일정, 문의양식 및 포트폴리오">
   <title>그래픽 디자이너 샨</title>
   <link rel="stylesheet" href="./style.css">
+  <script defer src="./firebase-config.js"></script>
   <script defer src="./page-data.js"></script>
   <script defer src="./portfolio-model.js"></script>
   <script defer src="./portfolio-carousel.js"></script>
@@ -15,6 +16,10 @@
   <script defer src="./video-dialog.js"></script>
   <script defer src="./embed-client.js"></script>
   <script defer src="./app.js"></script>
+  <script defer src="./analytics-geometry.js"></script>
+  <script defer src="./firebase-analytics.js"></script>
+  <script defer src="./analytics-runtime.js"></script>
+  <script type="module" src="./firebase-sync.js"></script>
 </head>
 <body>
   <a class="skip" href="#section-notice">작업 안내로 바로 이동</a>
@@ -127,6 +132,7 @@
       <div class="review-content" id="reviews"></div>
     </section>
     <noscript><p class="noscript">일정과 포트폴리오를 보려면 JavaScript를 활성화해 주세요.</p></noscript>
+    <footer class="page-footer"><a href="./privacy.html">방문 통계 안내</a></footer>
   </main>
 
   <dialog class="panel-dialog" id="memoDialog" aria-labelledby="memoTitle">

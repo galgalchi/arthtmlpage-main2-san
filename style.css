@@ -440,6 +440,10 @@ dialog::backdrop { background: #070923d9; }
 .media-dialog img { display: block; max-width: 100%; max-height: 72dvh; margin: 0 auto .8em; object-fit: contain; }
 .media-dialog a { color: #ff9bc9; font-size: .875rem; }
 .noscript { margin: 1rem auto; width: var(--wide); }
+.page-footer { text-align: center; padding: 0 16px 36px; font-size: .8125rem; }
+.page-footer a, .privacy-content a { color: #dedcf4; text-underline-offset: .2em; }
+.privacy-content { width: min(680px, calc(100% - 36px)); margin: 52px auto; line-height: 1.75; }
+.privacy-content h1, .privacy-content p { margin-bottom: 1em; }
 
 @media (min-width: 761px) and (max-width: 1100px) {
   .notice-content, .hero-card { width: 73%; }

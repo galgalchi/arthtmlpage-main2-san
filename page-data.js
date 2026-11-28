@@ -1,4 +1,4 @@
-// Firebase 연결 전에도 사용할 공개 페이지 데이터입니다. date 키는 한국 날짜(YYYY-MM-DD)입니다.
+// Firebase 데이터를 받기 전 표시할 기본값입니다. 날짜 키는 한국 날짜(YYYY-MM-DD)입니다.
 window.SAN_PAGE_DATA = {
   name: '샨',
   artmugUrl: '',
