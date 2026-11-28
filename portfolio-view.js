@@ -145,21 +145,42 @@
     const tabs = element('div', 'portfolio-cat-tabs pv-tabs');
     primaryNav.append(tabs);
 
+    const secondaryNav = element('nav', 'pv-secondary-nav');
+    secondaryNav.setAttribute('aria-label', '포트폴리오 2차 카테고리');
+    const secondaryTabs = element('div', 'pv-tabs');
+    secondaryNav.append(secondaryTabs);
+
     const controls = element('div', 'pv-controls');
-    const select = element('select', 'pv-secondary');
-    select.setAttribute('aria-label', '2차 카테고리 선택');
     const modeButton = button('portfolio-mode pv-mode', '슬라이드로 보기');
-    controls.append(select, modeButton);
+    controls.append(modeButton);
     const status = element('p', 'pv-status', '포트폴리오를 불러오는 중입니다.');
     status.setAttribute('role', 'status');
     const section = element('div', 'pf-type-section active pv-section');
-    host.replaceChildren(primaryNav, controls, status, section);
-    primaryNav.hidden = controls.hidden = true;
+    host.replaceChildren(primaryNav, secondaryNav, controls, status, section);
+    primaryNav.hidden = secondaryNav.hidden = controls.hidden = true;
 
     let data, selectedPrimary, selectedSecondary, selectedMode, slideKey;
     let manuallySelected = false;
     let primarySignature, secondarySignature, contentSignature;
     let releaseSlider;
+
+    function paintTabs(list, categories, activate) {
+      list.style.setProperty('--tab-columns', Math.max(1, Math.min(6, categories.length)));
+      list.replaceChildren(...categories.map(([key, entry]) => {
+        const tab = button('pf-tab-btn', entry.name, entry.name);
+        tab.dataset.categoryId = key;
+        tab.onclick = () => activate(key);
+        return tab;
+      }));
+    }
+
+    function selectTab(list, activeId) {
+      for (const tab of list.children) {
+        const active = tab.dataset.categoryId === activeId;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-pressed', String(active));
+      }
+    }
 
     function reportCategory() {
       const work = section.querySelector('[data-kind]');
@@ -185,9 +206,8 @@
       const mode = selectedMode || defaults.mode;
       const works = publicWorks(secondary);
       primaryNav.hidden = !primaries.length;
-      controls.hidden = secondaries.length < 2 && !works.length;
-      select.hidden = secondaries.length < 2;
-      modeButton.hidden = !works.length;
+      secondaryNav.hidden = !secondaries.length;
+      controls.hidden = !works.length;
       modeButton.textContent = mode === 'slide' ? '격자로 보기' : '슬라이드로 보기';
       modeButton.setAttribute('aria-label', modeButton.textContent);
       modeButton.onclick = () => {
@@ -197,35 +217,31 @@
 
       const primaryList = JSON.stringify(primaries.map(([id, entry]) => [id, entry.name]));
       if (primaryList !== primarySignature) {
-        tabs.replaceChildren();
         primarySignature = primaryList;
-        tabs.style.setProperty('--tab-columns', Math.max(1, Math.min(6, primaries.length)));
-        for (const [id, entry] of primaries) {
-          const tab = button('pf-tab-btn', entry.name, entry.name);
-          tab.dataset.primaryId = id;
-          tab.onclick = () => {
-            if (selectedPrimary === id) return;
-            manuallySelected = true;
-            selectedPrimary = id;
-            selectedSecondary = slideKey = null;
-            render();
-            reportCategory();
-          };
-          tabs.append(tab);
-        }
+        paintTabs(tabs, primaries, id => {
+          if (selectedPrimary === id) return;
+          manuallySelected = true;
+          selectedPrimary = id;
+          selectedSecondary = slideKey = null;
+          render();
+          reportCategory();
+        });
       }
-      for (const tab of tabs.children) {
-        const active = tab.dataset.primaryId === selectedPrimary;
-        tab.classList.toggle('active', active);
-        tab.setAttribute('aria-pressed', String(active));
-      }
+      selectTab(tabs, selectedPrimary);
 
-      const options = JSON.stringify(secondaries.map(([id, entry]) => [id, entry.name]));
+      const options = JSON.stringify([selectedPrimary, secondaries.map(([id, entry]) => [id, entry.name])]);
       if (options !== secondarySignature) {
-        select.replaceChildren(...secondaries.map(([id, entry]) => new Option(entry.name, id)));
         secondarySignature = options;
+        paintTabs(secondaryTabs, secondaries, id => {
+          if (selectedSecondary === id) return;
+          manuallySelected = true;
+          selectedSecondary = id;
+          slideKey = null;
+          render();
+          reportCategory();
+        });
       }
-      select.value = selectedSecondary || '';
+      selectTab(secondaryTabs, selectedSecondary);
       status.hidden = !!works.length;
       if (!works.length) {
         status.textContent = !primaries.length ? '등록된 포트폴리오가 없습니다.'
@@ -247,14 +263,6 @@
         renderGrid(section, works, originalCategory);
       }
     }
-
-    select.onchange = () => {
-      manuallySelected = true;
-      selectedSecondary = select.value;
-      slideKey = null;
-      render();
-      reportCategory();
-    };
 
     function setData(next) {
       data = next;

@@ -9,14 +9,20 @@ window.SAN_PAGE_DATA = {
   },
   portfolio: {
     version: 2,
-    defaults: { primaryId: 'rt-poster', mode: 'grid' },
+    defaults: { primaryId: 'image-category', secondaryId: 'rt-poster', mode: 'grid' },
     categories: {
-      poster: {name: '일반포스터', order: 0, categories: {main: {name: '전체', items: {}}}},
-      'rt-poster': {name: 'RT포스터', order: 1, categories: {main: {name: '전체', items: {}}}},
-      schedule: {name: '스케줄표', order: 2, categories: {main: {name: '전체', items: {}}}},
-      ppt: {name: 'PPT', order: 3, categories: {main: {name: '전체', items: {}}}},
-      broadcast: {name: '방송화면', order: 4, categories: {main: {name: '전체', items: {}}}},
-      logo: {name: '로고', order: 5, categories: {main: {name: '전체', items: {}}}}
+      'image-category': {
+        name: '이미지 포트폴리오',
+        order: 0,
+        categories: {
+          poster: {name: '일반포스터', order: 0},
+          'rt-poster': {name: 'RT포스터', order: 1},
+          schedule: {name: '스케줄표', order: 2},
+          ppt: {name: 'PPT', order: 3},
+          broadcast: {name: '방송화면', order: 4},
+          logo: {name: '로고', order: 5}
+        }
+      }
     }
   },
   estimate: [

@@ -364,9 +364,11 @@ button:focus-visible, a:focus-visible, summary:focus-visible, textarea:focus-vis
 
 .portfolio { margin-top: calc(256 * var(--u)); padding-bottom: calc(170 * var(--u)); }
 .portfolio-content, .review-content { width: var(--wide); margin: calc(63 * var(--u)) auto 0; }
-.pv-primary-nav { display: flex; align-items: center; gap: 8px; }
-.pv-tabs { display: grid; flex: 1; grid-template-columns: repeat(var(--tab-columns, 6), minmax(0, 1fr)); gap: calc(27 * var(--u)); min-width: 0; }
-.pf-tab-btn, .portfolio-mode, .pv-secondary, .review-controls button {
+.pv-primary-nav { margin-bottom: clamp(12px, 2vw, 25px); }
+.pv-primary-nav .pv-tabs { display: flex; flex-wrap: wrap; }
+.pv-primary-nav .pf-tab-btn { font-size: 1rem; min-height: 38px; padding-inline: 1em; }
+.pv-tabs { display: grid; grid-template-columns: repeat(var(--tab-columns, 6), minmax(0, 1fr)); gap: clamp(7px, calc(22 * var(--u)), 22px); min-width: 0; }
+.pf-tab-btn, .portfolio-mode, .review-controls button {
   min-width: 0;
   min-height: 44px;
   padding: .45em;
@@ -380,7 +382,6 @@ button:focus-visible, a:focus-visible, summary:focus-visible, textarea:focus-vis
 .pf-tab-btn:hover { background: #eeedfb; }
 .pf-tab-btn.active { background: var(--pink); color: #180924; }
 .pv-controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 1rem; }
-.pv-secondary { max-width: 55%; }
 .pv-status { margin-top: 1.2rem; color: #dedcf4; text-align: center; font-size: .875rem; }
 .pv-section { margin-top: 1rem; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; }
@@ -472,8 +473,12 @@ dialog::backdrop { background: #070923d9; }
   .benefits br { display: none; }
   .notice, .process, .schedule, .inquiry, .portfolio { margin-top: clamp(65px, 13vw, 100px); }
   .section-title::after { width: min(43%, 215px); margin-top: 11px; }
-  .ornament { display: none; }
-  .hero-decor { display: block; height: 440px; background-size: auto 440px; background-position: center top; opacity: .62; }
+  .ornament { opacity: .78; }
+  .hero-decor { height: clamp(320px, 70vw, 540px); background-size: auto 100%; background-position: center top; }
+  .notice-decor { top: auto; bottom: -64px; height: auto; aspect-ratio: 1673 / 1220; }
+  .process-decor { top: auto; right: 16px; bottom: -51px; width: clamp(96px, 23vw, 150px); height: auto; aspect-ratio: 260 / 110; }
+  .calendar-decor { top: auto; bottom: -62px; height: auto; aspect-ratio: 1673 / 1040; }
+  .inquiry-decor { top: auto; bottom: -54px; height: auto; aspect-ratio: 1673 / 840; }
   .notice-content { width: var(--wide); margin-top: 19px; }
   .notice-list { gap: 7px; margin-top: 12px; }
   .notice-lead, .notice-list li { border-radius: 17px; padding: .75rem .85rem; font-size: .9rem; }
@@ -490,7 +495,7 @@ dialog::backdrop { background: #070923d9; }
   .inquiry-actions { margin-top: 14px; }
   .portfolio, .reviews { padding-bottom: 58px; }
   .portfolio-content, .review-content { margin-top: 24px; }
-  .pv-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+  .pv-tabs { grid-template-columns: repeat(min(3, var(--tab-columns, 6)), minmax(0, 1fr)); }
   .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .review-grid { grid-template-columns: 1fr; }
 }
